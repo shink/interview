@@ -11,31 +11,31 @@ public class WhiteBoard {
     /**
      * 快速排序
      */
-    public void quickSort(int[] arr, int left, int right) {
+    public void quickSort(int[] nums, int left, int right) {
         if (left > right) {
             return;
         }
 
-        int i = left, j = right, pivot = arr[left];
+        int i = left, j = right, pivot = nums[left];
         while (i < j) {
-            while (i < j && arr[j] >= pivot) {
+            while (i < j && nums[j] >= pivot) {
                 --j;
             }
-            while (i < j && arr[i] <= pivot) {
+            while (i < j && nums[i] <= pivot) {
                 ++i;
             }
             if (i < j) {
-                int tmp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = tmp;
+                int tmp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = tmp;
             }
         }
 
-        arr[left] = arr[i];
-        arr[i] = pivot;
+        nums[left] = nums[i];
+        nums[i] = pivot;
 
-        quickSort(arr, left, i - 1);
-        quickSort(arr, i + 1, right);
+        quickSort(nums, left, i - 1);
+        quickSort(nums, i + 1, right);
     }
 
     /**
@@ -55,22 +55,22 @@ public class WhiteBoard {
         }
     }
 
-    private void merge(int[] arr, int left, int mid, int right, int[] result) {
+    private void merge(int[] nums, int left, int mid, int right, int[] result) {
         int i = left, j = mid + 1, k = 0;
         while (i <= mid && j <= right) {
-            if (arr[i] <= arr[j]) {
-                result[k++] = arr[i++];
+            if (nums[i] <= nums[j]) {
+                result[k++] = nums[i++];
             } else {
-                result[k++] = arr[j++];
+                result[k++] = nums[j++];
             }
         }
         while (i <= mid) {
-            result[k++] = arr[i++];
+            result[k++] = nums[i++];
         }
         while (j <= right) {
-            result[k++] = arr[j++];
+            result[k++] = nums[j++];
         }
-        System.arraycopy(result, 0, arr, left, right - left + 1);
+        System.arraycopy(result, 0, nums, left, right - left + 1);
     }
 
 }

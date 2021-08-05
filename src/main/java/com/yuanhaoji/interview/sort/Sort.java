@@ -8,6 +8,21 @@ package com.yuanhaoji.interview.sort;
  */
 public interface Sort {
 
-    void sort(int[] arr, int left, int right);
+    /**
+     * 排序，[left, right]
+     *
+     * @param nums  数字数组
+     * @param left  左边界
+     * @param right 右边界
+     */
+    void sort(int[] nums, int left, int right);
+
+    default void swap(int[] nums, int left, int right) {
+        if (left != right) {
+            int tmp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = tmp;
+        }
+    }
 
 }

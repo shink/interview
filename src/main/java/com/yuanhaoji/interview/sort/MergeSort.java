@@ -9,48 +9,48 @@ package com.yuanhaoji.interview.sort;
 public class MergeSort implements Sort {
 
     @Override
-    public void sort(int[] array, int left, int right) {
+    public void sort(int[] nums, int left, int right) {
         // 开辟一个临时数组，避免在递归中频繁开辟空间
-        int[] result = new int[array.length];
-        mergeSort(array, left, right, result);
+        int[] result = new int[nums.length];
+        mergeSort(nums, left, right, result);
     }
 
-    public void mergeSort(int[] array, int left, int right, int[] result) {
+    public void mergeSort(int[] nums, int left, int right, int[] result) {
         if (left < right) {
             int mid = (left + right) / 2;
-            mergeSort(array, left, mid, result);
-            mergeSort(array, mid + 1, right, result);
+            mergeSort(nums, left, mid, result);
+            mergeSort(nums, mid + 1, right, result);
 
             // 将两个子问题序列合并
-            merge(array, left, mid, right, result);
+            merge(nums, left, mid, right, result);
         }
     }
 
-    private void merge(int[] array, int left, int mid, int right, int[] result) {
+    private void merge(int[] nums, int left, int mid, int right, int[] result) {
         int i = left;
         int j = mid + 1;
         int k = 0;
 
         while (i <= mid && j <= right) {
-            if (array[i] >= array[j]) {
-                result[k++] = array[j++];
+            if (nums[i] >= nums[j]) {
+                result[k++] = nums[j++];
             } else {
-                result[k++] = array[i++];
+                result[k++] = nums[i++];
             }
         }
 
         // 将剩余的左子问题序列填充到 result 中
         while (i <= mid) {
-            result[k++] = array[i++];
+            result[k++] = nums[i++];
         }
 
         // 将剩余的右子问题序列填充到 result 中
         while (j <= right) {
-            result[k++] = array[j++];
+            result[k++] = nums[j++];
         }
 
         // 将 result 中元素填充到原序列中，以便继续排序
-        System.arraycopy(result, 0, array, left, right - left + 1);
+        System.arraycopy(result, 0, nums, left, right - left + 1);
     }
 
 }

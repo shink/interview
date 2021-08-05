@@ -9,37 +9,33 @@ package com.yuanhaoji.interview.sort;
 public class QuickSort1 implements Sort {
 
     @Override
-    public void sort(int[] arr, int left, int right) {
+    public void sort(int[] nums, int left, int right) {
         if (left < right) {
             // 枢轴
-            int pivot = partition(arr, left, right);
-            sort(arr, left, pivot - 1);
-            sort(arr, pivot + 1, right);
+            int pivot = partition(nums, left, right);
+            sort(nums, left, pivot - 1);
+            sort(nums, pivot + 1, right);
         }
     }
 
-    public int partition(int[] array, int left, int right) {
+    public int partition(int[] nums, int left, int right) {
         int i = left;
         int j = right;
 
         while (i < j) {
-            while (i < j && array[i] <= array[j]) {
+            while (i < j && nums[i] <= nums[j]) {
                 --j;
             }
             if (i < j) {
-                int tmp = array[j];
-                array[j] = array[i];
-                array[i] = tmp;
+                swap(nums, i, j);
                 ++i;
             }
 
-            while (i < j && array[i] <= array[j]) {
+            while (i < j && nums[i] <= nums[j]) {
                 ++i;
             }
             if (i < j) {
-                int tmp = array[j];
-                array[j] = array[i];
-                array[i] = tmp;
+                swap(nums, i, j);
             }
         }
 
