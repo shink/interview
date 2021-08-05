@@ -17,14 +17,5 @@ jobs:
           java-version: 8
           distribution: adopt
 
-      - name: Cache Maven packages
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.m2/repository
-            !~/.m2/repository/org/apache/inlong
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
-
       - name: Unit test with Maven
         run: mvn --batch-mode --update-snapshots -e -V clean test
