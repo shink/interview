@@ -19,6 +19,7 @@ public class SortTestUtil {
     public static void assertArrayEquals(Sort sort) {
         int n = 10;
         int[] nums = generateRandomNums(0, 10, n);
+        // int[] nums = new int[] {1, 4, 4, 4, 4, 5, 5, 6, 7, 8};
         int[] origin = new int[n];
         System.arraycopy(nums, 0, origin, 0, n);
 
